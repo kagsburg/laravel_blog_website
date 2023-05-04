@@ -28,7 +28,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('SET NULL');
             $table->string('fax');
             $table->string('number_of_adults');
-            $table->string('number_of_adults');
+            $table->string('number_of_kids');
             $table->date('arrival_date');
             $table->time('arrival_time'); //00:00:00
             $table->date('departure_date');
