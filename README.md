@@ -1,4 +1,4 @@
-## Tropitel Gitega Hotel website in  Laravel 7
+## Chato Beach Resort in  Laravel 7
 
 
 ### Features :
