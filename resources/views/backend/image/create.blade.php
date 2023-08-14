@@ -17,7 +17,7 @@
                     <form method="post" action="{{route('image.store')}}" enctype="multipart/form-data">
                       {{csrf_field()}}
                       <div class="form-group">
-                        <label for="room_id"> {{ __('sidebar.photo_room') }}<span class="text-danger">*</span></label>
+                        <label for="room_id"> Room<span class="text-danger">*</span></label>
                         <select name="room_id" class="form-control">
                             <option value="">----</option>
                             @foreach($rooms as $key=>$data)
@@ -27,7 +27,7 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="inputPhoto" class="col-form-label">{{ __('sidebar.add_photo') }}</label>
+                        <label for="inputPhoto" class="col-form-label">{{ __('sidebar.add_photo') }} (Size 728px x 400px)</label>
                         <div class="input-group">
                             {{-- <span class="input-group-btn">
                                 <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">

@@ -40,7 +40,7 @@
 
 <body class="animsition">
     <div class="page-wrapper">
-        <div class="page-content--bge5">
+        <div class="page-content--bge5" style="background-image: url('{{ asset('frontend/images/login.jpeg')}} '); background-attachement: fixed; background-repeat: no-repeat; background-size: cover;">
             <div class="container">
                 <div class="login-wrap">
                     <div class="login-content">

@@ -23,6 +23,9 @@ class CreateRoomsTable extends Migration
             $table->float('price');
             $table->float('discount')->nullable();
             $table->boolean('is_featured')->deault(false);
+            $table->longText('amenities')->nullable();
+            $table->unsignedBigInteger('amenities_id')->nullable();
+            $table->foreign('amenities_id')->references('id')->on('amenities')->onDelete('SET NULL');
             $table->timestamps();
         });
     }

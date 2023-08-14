@@ -112,8 +112,8 @@
         </div>
 
     </div>
-
     @include('backend.layouts.footer')
+     @stack('scripts')
 
 </body>
 

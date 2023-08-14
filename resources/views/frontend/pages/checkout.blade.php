@@ -1,29 +1,26 @@
 @extends('frontend.layouts.master')
 @section('title') {{ __('header.book_title') }} @endsection
 @section('main-content')
-@include('frontend.layouts.notification')
 
-<!-- Breadcrumb Section Begin -->
-<div class="breadcrumb-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb-text">
-                    <h2>{{ __('header.book_title') }} </h2>
-                    <div class="bt-option">
-                        <a href="{{ route('home') }}">{{ __('header.home_title') }}</a>
-                        <span>{{ __('header.book_title') }}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="hero-wrap" style="background-image: url('{{ asset('frontend/images/bg_3.jpg') }}');">
+	<div class="overlay"></div>
+	<div class="container">
+	<div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+		<div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+		<div class="text">
+			<p class="breadcrumbs mb-2"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>About Us</span></p>
+			<h1 class="mb-4 bread">Book Now</h1>
+		</div>
+		</div>
+	</div>
+	</div>
 </div>
-<!-- Breadcrumb Section End -->
+
+@include('frontend.layouts.notification')
     
 <!-- Start Booking -->
 
-<section class="contact-section spad">
+<section class="ftco-section contact-section bg-light">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 offset-lg-1">
@@ -73,7 +70,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-md-6 col-12">
+                        {{-- <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
                                 <label>{{ __('header.book_form_phone') }} <span>*</span></label>
                                 <input type="number" name="phone" class="form-control" placeholder="" required value="{{old('phone')}}">
@@ -81,7 +78,7 @@
                                     <span class='text-danger'>{{$message}}</span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
@@ -93,7 +90,7 @@
                             </div>
                         </div>
                         
-                        <div class="col-lg-6 col-md-6 col-12">
+                        {{-- <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
                                 <label>{{ __('header.book_form_add1') }}<span>*</span></label>
                                 <input type="text" class="form-control" name="address1" placeholder="" value="{{old('address1')}}">
@@ -101,9 +98,9 @@
                                     <span class='text-danger'>{{$message}}</span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="col-lg-6 col-md-6 col-12">
+                        {{-- <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
                                 <label>{{ __('header.book_form_postal') }}</label>
                                 <input type="text" class="form-control" name="post_code" placeholder="" value="{{old('post_code')}}">
@@ -138,7 +135,7 @@
                                     <span class='text-danger'>{{$message}}</span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
                                 <label>{{ __('header.book_form_arrival_date') }}</label>
@@ -148,7 +145,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-12">
+                        {{-- <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
                                 <label>{{ __('header.book_form_arrival_time') }}</label>
                                 <input type="time" class="form-control" name="arrival_time" placeholder="" value="{{old('arrival_time')}}">
@@ -156,7 +153,7 @@
                                     <span class='text-danger'>{{$message}}</span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="form-group">
                                 <label>{{ __('header.book_form_departure_date') }}</label>
@@ -167,7 +164,7 @@
                             </div>
                         </div>
                         <div class="col-lg-12">
-                            <button type="submit">{{ __('header.contact_button') }}</button>
+                            <button type="submit" class="btn btn-primary py-3 px-5">{{ __('header.contact_button') }}</button>
                         </div>
                     </div>
                 </form>

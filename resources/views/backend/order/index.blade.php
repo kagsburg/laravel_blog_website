@@ -18,6 +18,7 @@
                   <th scope="col">{{ __('sidebar.book_name') }}</th>
                   <th scope="col">{{ __('sidebar.book_email') }}</th>
                   <th scope="col">{{ __('sidebar.book_country') }}</th>
+                  <th scope="col">Guests</th>
                   <th scope="col">{{ __('sidebar.book_room_type') }}</th>
                   <th scope="col">{{ __('sidebar.book_date') }}</th>
                   <th scope="col">{{ __('sidebar.book_action') }}</th>
@@ -30,9 +31,10 @@
                   @endphp
                 <tr class="@if($order->created_at) border-left-success @else bg-light border-left-warning @endif">
                   <td scope="row">{{$loop->index +1}}</td>
-                  <td>{{$order->first_name}} - {{$order->last_name}}</td>
+                  <td>{{$order->name}}</td>
                   <td>{{$order->email}}</td>
                   <td>{{$order->country}}</td>
+                  <td>{{$order->number_of_adults}}</td>
                   <td>
                     @foreach($room as $data)
                       {{$order->room->title}}

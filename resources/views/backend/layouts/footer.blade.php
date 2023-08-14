@@ -31,5 +31,6 @@
 <script src="{{ asset('backend/vendor/select2/select2.min.js') }}">
 </script>
 
+
 <!-- Main JS-->
 <script src="{{ asset('backend/js/main.js') }}"></script>

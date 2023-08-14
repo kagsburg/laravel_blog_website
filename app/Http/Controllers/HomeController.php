@@ -234,5 +234,11 @@ class HomeController extends Controller
         return redirect()->route('user')->with('success','Password successfully changed');
     }
 
+    public function show() {
+        $feed = \Dymantic\InstagramFeed\InstagramFeed::for('my profile');
+    
+        return view('instagram-feed', ['instagram_feed' => $feed]);
+    }
+
     
 }

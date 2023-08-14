@@ -24,6 +24,14 @@
                       </div>
 
                       <div class="form-group">
+                        <label for="inputTitle" class="col-form-label">Position <span class="text-danger">*</span></label>
+                        <input id="inputTitle" type="text" name="position" placeholder=""  value="{{old('position')}}" class="form-control">
+                        @error('position')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
+                      </div>
+
+                      <div class="form-group">
                         <label for="message" class="col-form-label">{{ __('sidebar.testimony_message') }}</label>
                         <textarea class="form-control" id="message" name="message">{{old('message')}}</textarea>
                         @error('message')

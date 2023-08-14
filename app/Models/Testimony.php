@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Testimony extends Model
 {
-    protected $fillable=['name','message', 'slug','photo','status'];
+    protected $fillable=['name', 'position', 'message', 'slug','photo','status'];
 }

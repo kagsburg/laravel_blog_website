@@ -7,11 +7,7 @@ use App\Models\RoomReview;
 
 class Room extends Model
 {
-    protected $fillable=['title', 'slug', 'photo', 'description','price','status','photo','discount','is_featured'];
-
-    public function image_info(){
-        return $this->hasOne('App\Models\Image','id','image_id');
-    }
+    protected $fillable=['title', 'slug', 'photo', 'description','price','status','photo','discount','is_featured', 'amenities', 'amenities_id'];
 
     public static function getAllRoom(){
         return Room::orderBy('id','desc')->paginate(10);
@@ -32,6 +28,14 @@ class Room extends Model
 
     public function images() {
         return $this->hasMany(Image::class);
+    }
+
+    public function amenities(){
+        return $this->hasMany('App\Models\Amenities','id','amenities_id');
+    }
+
+    public function video(){
+        return $this->hasOne(Video::class);
     }
 
 }

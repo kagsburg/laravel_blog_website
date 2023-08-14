@@ -16,6 +16,7 @@ class CreateTestimoniesTable extends Migration
         Schema::create('testimonies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('position');
             $table->text('message')->nullable();
             $table->string('slug')->unique();
             $table->string('photo')->nullable();

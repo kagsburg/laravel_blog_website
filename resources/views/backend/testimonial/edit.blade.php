@@ -25,6 +25,14 @@
                       </div>
 
                       <div class="form-group">
+                        <label for="inputTitle" class="col-form-label">Position <span class="text-danger">*</span></label>
+                        <input id="inputTitle" type="text" name="position" placeholder=""  value="{{$testimonial->position}}" class="form-control">
+                        @error('position')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
+                      </div>
+
+                      <div class="form-group">
                         <label for="message" class="col-form-label">Message</label>
                         <textarea class="form-control" id="message" name="message">{{$testimonial->message}}</textarea>
                         @error('message')

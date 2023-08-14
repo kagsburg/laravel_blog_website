@@ -48,7 +48,7 @@
                       </div>
 
                       <div class="form-group">
-                      <label for="inputPhoto" class="col-form-label">{{ __('sidebar.bann_photo') }} <span class="text-danger">*</span></label>
+                      <label for="inputPhoto" class="col-form-label">{{ __('sidebar.bann_photo') }}  (Size: 1600px X 805px) <span class="text-danger">*</span></label>
                       <div class="input-group">
                           {{-- <span class="input-group-btn">
                               <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">

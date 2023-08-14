@@ -45,6 +45,7 @@
                       <th>Slug</th>
                       <th>{{ __('sidebar.hall_featured') }}</th>
                       <th>{{ __('sidebar.hall_price') }}</th>
+                      <th>Amenities</th>
                       <th>Photo</th>
                       <th>{{ __('sidebar.hall_status') }}</th>
                       <th>{{ __('sidebar.hall_action') }}</th>
@@ -57,7 +58,10 @@
                             <td>{{$room->title}}</td>
                             <td>{{$room->slug}}</td>
                             <td>{{(($room->is_featured==1)? 'Yes': 'No')}}</td>
-                            <td>FBU&nbsp;{{$room->price}} /-</td>
+                            <td>TSHS&nbsp;{{$room->price}} /-</td>
+                            <td>
+                              {{$room->amenities}}
+                            </td>
                             <td>
                                 @if($room->photo)
                                     <img src="{{ Storage::url($room->photo) }}" class="img-fluid zoom" style="max-width:80px" alt="{{ Storage::url($room->photo) }}">

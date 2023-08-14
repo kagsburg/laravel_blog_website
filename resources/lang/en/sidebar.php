@@ -82,7 +82,7 @@
 
   'hall_slug' => 'Slug',
 
-  'hall_photo' => 'Photo',
+  'hall_photo' => 'Profile Photo',
 
   'hall_status' => 'Status',
 
@@ -96,7 +96,7 @@
 
   'hall_category' => 'Category',
 
-  'hall_price' => 'Price(FBU)',
+  'hall_price' => 'Price(TSHS)',
 
   'hall_choose_file' => 'Choose File / No file choosen ',
 
@@ -254,6 +254,8 @@
 
    'post_category_list' => 'List of Category',
 
+   'add_post_category' => 'Add Post Category',
+
    'add_post_tag' => 'Add Post Tag',
 
    'all_post_tag' => 'All Post Tag',
@@ -272,9 +274,13 @@
 
   'post_photo' => 'Photo ',
 
+  'post_slug' => 'Slug',
+
   'post_status' => 'Status',
 
   'post_action' => 'Action',
+
+  'post_reset' => 'Reset',
 
   'post_submit' => 'Submit',
 

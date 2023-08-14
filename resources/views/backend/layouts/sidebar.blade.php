@@ -31,12 +31,18 @@
                         <li>
                             <a href="{{route('image.index')}}">{{ __('sidebar.halls_photos') }}</a>
                         </li>
+                        <li>
+                            <a href="{{route('video.index')}}">Add Video to Room</a>
+                        </li>
+                        <li>
+                            <a href="{{route('amen.index')}}">Amenities</a>
+                        </li>
                     </ul>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{route('category.index')}}">
                         <i class="fas fa-table"></i>{{ __('sidebar.category') }}</a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{route('service.index')}}">
                         <i class="fas fa-building"></i>{{ __('sidebar.services') }}</a>
@@ -45,10 +51,10 @@
                     <a href="{{route('order.index')}}">
                         <i class="fas fa-calendar-alt"></i>{{ __('sidebar.bookings') }}</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{route('review.index')}}">
                         <i class="fas fa-map-marker-alt"></i>{{ __('sidebar.reviews') }}</a>
-                </li>
+                </li> --}}
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
                         <i class="fas fa-copy"></i>{{ __('sidebar.posts') }}</a>
@@ -62,9 +68,9 @@
                         <li>
                             <a href="{{route('post-tag.index')}}">{{ __('sidebar.post_tag') }}</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{route('comment.index')}}">{{ __('sidebar.post_comment') }}</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
                 <li>
@@ -72,9 +78,14 @@
                         <i class="fas fa-user"></i>{{ __('sidebar.users') }}</a>
                 </li>
                 <li>
+                    <a href="{{route('homevideo.index')}}">
+                        <i class="fas fa-calendar-alt"></i>Home Video</a>
+                </li>
+                <li>
                     <a href="{{route('testimonial.index')}}">
                         <i class="fas fa-calendar-alt"></i>{{ __('sidebar.testimony') }}</a>
                 </li>
+                
             </ul>
         </nav>
     </div>

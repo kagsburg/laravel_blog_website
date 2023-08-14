@@ -28,6 +28,7 @@ Route::get('/','FrontendController@home')->name('home');
 // Frontend Routes
 Route::get('/home', 'FrontendController@index');
 Route::get('/about-us','FrontendController@aboutUs')->name('about-us');
+Route::get('/service','FrontendController@service')->name('service');
 Route::get('/contact','FrontendController@contact')->name('contact');
 Route::post('/contact/message','MessageController@store')->name('contact.store');
 //Room
@@ -56,6 +57,8 @@ Route::get('/blog/search','FrontendController@blogSearch')->name('blog.search');
 Route::post('/blog/filter','FrontendController@blogFilter')->name('blog.filter');
 Route::get('blog-cat/{slug}','FrontendController@blogByCategory')->name('blog.category');
 Route::get('blog-tag/{slug}','FrontendController@blogByTag')->name('blog.tag');
+//Download PDF Menu
+Route::get('/menu.pdf', 'FrontendController@downloadPDF')->name('downloadMenu');
 
 // NewsLetter
 Route::post('/subscribe','FrontendController@subscribe')->name('subscribe');
@@ -82,6 +85,10 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
     Route::resource('/room','RoomController');
     // Image 
     Route::resource('image','ImageController');
+    // Amenities 
+    Route::resource('amen','AmenitiesController');
+    // Video 
+    Route::resource('video','VideoController');
     // Ajax for sub category
     Route::post('/category/{id}/child','CategoryController@getChildByParent');
     // POST category
@@ -109,6 +116,9 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
     Route::resource('testimonial','TestimonyController');
     // Order 
     Route::resource('order','OrderController');
+    // Home Video 
+    Route::resource('homevideo','HomevideoController');
+    
 });
 
 Route::get('lang/{locale}', 'HomeController@lang');

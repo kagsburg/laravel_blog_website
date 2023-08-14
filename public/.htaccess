@@ -19,3 +19,9 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^chatobeachresort\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.chatobeachresort\.com$
+RewriteRule ^/?$ "https\:\/\/chatobeachresort\.com\/" [R=301,L]
+

@@ -114,7 +114,7 @@ class CategoryController extends Controller
         $this->validate($request,[
             'title'=>'string|required',
             'summary'=>'string|nullable',
-            'photo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            // 'photo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'status'=>'required|in:active,inactive',
             'is_parent'=>'sometimes|in:1',
             'parent_id'=>'nullable|exists:categories,id',
@@ -127,8 +127,8 @@ class CategoryController extends Controller
         $data['status'] = $request->get('status');
         $data['parent_id'] = $request->get('parent_id');
         // return $data;
-        $path = $request->file('photo')->store('public/images');
-        $data['photo'] = $path; 
+        // $path = $request->file('photo')->store('public/images');
+        // $data['photo'] = $path; 
         $status=$category->fill($data)->save();
         if($status){
             request()->session()->flash('success','Category successfully updated');

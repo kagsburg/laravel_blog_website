@@ -35,16 +35,18 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'first_name'=>'string|required|min:2',
-            'last_name'=>'string|required|min:2',
+            'name'=>'string|required|min:2',
+            // 'last_name'=>'string|required|min:2',
             'email'=>'email|required',
-            'phone'=>'numeric|required',
+            // 'phone'=>'numeric|required',
+            'arrival_date'=>'string|required',
+            'departure_date'=>'string|required',
             'country'=>'string|required',
-            'post_code'=>'string|nullable',
-            'address1'=>'string|required',
-            'fax'=>'string|required',
+            // 'post_code'=>'string|nullable',
+            // 'address1'=>'string|required',
+            // 'fax'=>'string|required',
             'number_of_adults'=>'string|required',
-            'number_of_kids'=>'string|required'
+            'room_id'=>'nullable|required'
             
         ]);
         // return $request->all();
@@ -54,16 +56,18 @@ class BookController extends Controller
         $data=array();
         $data['url']=route('order.show',$order->id);
         $data['date']=$order->created_at->format('F d, Y h:i A');
-        $data['first_name']=$order->first_name;
-        $data['last_name']=$order->last_name;
+        $data['name']=$order->name;
+        // $data['last_name']=$order->last_name;
         $data['email']=$order->email;
-        $data['phone']=$order->phone;
+        // $data['phone']=$order->phone;
+        $data['arrival_date']=$order->arrival_date;
+        $data['departure_date']=$order->departure_date;
         $data['country']=$order->country;
-        $data['postcode']=$order->postcode;
-        $data['address1']=$order->address1;
-        $data['fax']=$order->fax;
+        // $data['postcode']=$order->postcode;
+        // $data['address1']=$order->address1;
+        $data['room_id']=$order->room_id;
         $data['number_of_adults']=$order->number_of_adults;
-        $data['number_of_kids']=$order->number_of_kids;
+        // $data['number_of_kids']=$order->number_of_kids;
         // $data['photo']=Auth()->user()->photo;
 
         if($order){
@@ -72,7 +76,7 @@ class BookController extends Controller
         else{
             request()->session()->flash('error','Please try again!!');
         }
-        return redirect()->route('checkout');
+        return redirect()->route('home');
     }
 
     /**

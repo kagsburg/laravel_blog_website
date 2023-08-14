@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Amenities;
 use Illuminate\Http\Request;
 use App\Models\Room;
 
@@ -28,7 +29,9 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('backend.room.create');
+        $amenities=Amenities::orderBy('name','ASC')->get();
+        return view('backend.room.create')
+            ->with('amenities',$amenities);
     }
 
     /**
@@ -47,6 +50,7 @@ class RoomController extends Controller
             'is_featured'=>'sometimes|in:1',
             'price'=>'required|numeric',
             'discount'=>'nullable|numeric',
+            'amenities'=>'nullable|max:300',
             'photo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'status'=>'required|in:active,inactive',
         ]);
@@ -63,6 +67,15 @@ class RoomController extends Controller
         $data['price'] = $request->get('price');
         $data['discount'] = $request->get('discount');
         $data['status'] = $request->get('status');
+
+        $amenities=$request->input('amenities');
+        if($amenities){
+            $data['amenities']=implode(',',$amenities);
+        }
+        else{
+            $data['amenities']='';
+        }
+
         // return $slug;
         $path = $request->file('photo')->store('public/images');
         $data['photo'] = $path; 
@@ -98,10 +111,12 @@ class RoomController extends Controller
     {
         $room=Room::findOrFail($id);
         $items=Room::where('id',$id)->get();
+        $amenities=Amenities::get();
         // return $items;
         return view('backend.room.edit')
             ->with('room',$room)
-            ->with('items',$items);
+            ->with('items',$items)
+            ->with('amenities',$amenities);
     }
 
     /**
@@ -121,6 +136,7 @@ class RoomController extends Controller
             'description'=>'string|nullable',
             'is_featured'=>'sometimes|in:1',
             'price'=>'required|numeric',
+            'amenities'=>'nullable',
             'discount'=>'nullable|numeric',
             'status'=>'required|in:active,inactive',
         ]);
@@ -131,7 +147,16 @@ class RoomController extends Controller
         $data['is_featured'] = $request->get('is_featured');
         $data['price'] = $request->get('price');
         $data['discount'] = $request->get('discount');
+        $data['amenities_id'] = $request->get('amenities_id');
         $data['status'] = $request->get('status');
+
+        $amenities=$request->input('amenities');
+        if($amenities){
+            $data['amenities']=implode(',',$amenities);
+        }
+        else{
+            $data['amenities']='';
+        }
 
         // return $data;
         $path = $request->file('photo')->store('public/images');

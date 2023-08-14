@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="Tanzania resort, Chato Beach, Chato Beach Resort, Tanzania hotel, Tanzania best hotels, Burigi-chato, Rubondo Island, Tanzania resorts">
 
     <!-- Title Page-->
     <title>@yield('title') - {{ config('app.name') }}</title>
@@ -35,5 +35,7 @@
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('backend/images/icon/favicon.ico') }}">
+
+    <!--<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>-->
 
 </head>

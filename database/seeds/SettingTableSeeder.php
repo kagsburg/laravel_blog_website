@@ -16,9 +16,9 @@ class SettingTableSeeder extends Seeder
             'short_des'=>"This hotel is located in the political capital of Burundi, Gitega.",
             // 'photo'=>"image.jpg",
             'logo'=>'logo.jpeg',
-            'address'=>"Chato Beach Street, Ukaranga, Geita, Tanzania. (4.1 km from the center)",
+            'address'=>"Chato, Geita, Tanzania.",
             'email'=>"info@chatobeachresort.com",
-            'phone'=>"+255 737 562 788",
+            'phone'=>"+255 684 957 484",
         );
         DB::table('settings')->insert($data);
     }

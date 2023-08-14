@@ -58,7 +58,7 @@ class BannerController extends Controller
         $data['description'] = $request->get('description');
         $data['status'] = $request->get('status');
         // return $slug;
-        $path = $request->file('photo')->store('public/images');
+        $path = $request->file('photo')->store('images', 'public_storage');
         $data['photo'] = $path; 
         $status=Banner::create($data);
         if($status){
@@ -124,7 +124,7 @@ class BannerController extends Controller
         $data['description'] = $request->get('description');
         $data['status'] = $request->get('status');
         // return $slug;
-        $path = $request->file('photo')->store('public/images');
+        $path = $request->file('photo')->store('images', 'public_storage');
         $data['photo'] = $path; 
         $status=$banner->fill($data)->save();
         if($status){

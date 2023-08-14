@@ -40,15 +40,29 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="price" class="col-form-label">Price(FBU) <span class="text-danger">*</span></label>
+                        <label for="price" class="col-form-label">Price(TSHS) <span class="text-danger">*</span></label>
                         <input id="price" type="number" name="price" placeholder=""  value="{{$room->price}}" class="form-control">
                         @error('price')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                       </div>
 
+                      @php 
+                        $room_amenities=explode(',',$room->amenities);
+                      @endphp
                       <div class="form-group">
-                        <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
+                        <label for="amenities">Amenities</label>
+                        <select name="amenities[]" multiple  data-live-search="true" class="form-control selectpicker">
+                            <option value="">----</option>
+                            @foreach($amenities as $key=>$data)
+                            
+                            <option value="{{$data->name}}"  {{(( in_array( "$data->name",$room_amenities ) ) ? 'selected' : '')}}>{{$data->name}}</option>
+                            @endforeach
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="inputPhoto" class="col-form-label">Profile Photo (Size 458px x 360px)</label>
                         <div class="input-group">
                           <input type="file" id="file-input" name="photo" value="{{$room->photo}}" class="form-control-file">
                       </div>

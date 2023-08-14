@@ -83,18 +83,12 @@
                                 @endif
                             </td>
                             <td>
-                              <div class="table-data-feature">
-                                  <a href="{{route('image.edit',$image->id)}}" class="item" data-toggle="tooltip" data-placement="top" title="Edit" 
-                                    style="height:30px; width:30px;border-radius:50%"><i class="zmdi zmdi-edit"></i></a>
-                                  <form method="POST" action="{{route('image.destroy',[$image->id])}}">
-                                    @csrf 
-                                    @method('delete')
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" data-id={{$image->id}} 
-                                          style="height:30px; width:30px;border-radius:50%">
-                                          <i class="zmdi zmdi-delete"></i>
-                                        </button>
-                                  </form>
-                              </div>
+                              <a href="{{route('image.edit',$image->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
+                          <form method="POST" action="{{route('image.destroy',[$image->id])}}">
+                            @csrf
+                            @method('delete')
+                                <button class="btn btn-danger btn-sm dltBtn" data-id={{$image->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>
+                              </form>
                           </td>
                         </tr>  
                     @endforeach

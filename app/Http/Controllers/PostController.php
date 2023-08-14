@@ -81,7 +81,7 @@ class PostController extends Controller
             $data['tags']='';
         }
         // return $data;
-        $path = $request->file('photo')->store('public/images');
+        $path = $request->file('photo')->store('images', 'public_storage');
         $data['photo'] = $path;
         $status=Post::create($data);
         if($status){
@@ -135,7 +135,7 @@ class PostController extends Controller
             'quote'=>'string|nullable',
             'summary'=>'string|required',
             'description'=>'string|nullable',
-            'photo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            // 'photo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'tags'=>'nullable',
             'added_by'=>'nullable',
             'post_cat_id'=>'required',
@@ -160,8 +160,15 @@ class PostController extends Controller
             $data['tags']='';
         }
         // return $data;
-        $path = $request->file('photo')->store('public/images');
-        $data['photo'] = $path;
+        // check if photo is added
+        if($request->hasFile('photo')){
+            $path = $request->file('photo')->store('images', 'public_storage');
+            $data['photo'] = $path;
+        }else{
+            $data['photo'] = $post->photo;
+        }
+        // $path = $request->file('photo')->store('public/images');
+        // $data['photo'] = $path;
         $status=$post->fill($data)->save();
         if($status){
             request()->session()->flash('success','Post Successfully updated');

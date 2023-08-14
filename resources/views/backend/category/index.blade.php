@@ -75,23 +75,13 @@
                               @endif
                           </td>
                           <td>
-                            <div class="table-data-feature">
-                              <a href="{{route('category.edit',$category->id)}}" class="item" 
-                                style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" 
-                                data-placement="top">
-                                <i class="zmdi zmdi-edit"></i>
-                              </a>
-                              <form method="POST" action="{{route('category.destroy',[$category->id])}}">
-                                @csrf
-                                @method('delete')
-                                    <button class="item" data-id={{$category->id}} 
-                                      style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" 
-                                      data-placement="top" title="Delete">
-                                      <i class="zmdi zmdi-delete"></i>
-                                    </button>
-                              </form>
-                            </div>
-                          </td>
+                            <a href="{{route('category.edit',$category->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
+                        <form method="POST" action="{{route('category.destroy',[$category->id])}}">
+                          @csrf
+                          @method('delete')
+                              <button class="btn btn-danger btn-sm dltBtn" data-id={{$category->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>
+                            </form>
+                        </td>
                       </tr>
                       @endforeach
                       <tr class="spacer"></tr>

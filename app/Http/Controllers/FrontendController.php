@@ -10,6 +10,7 @@ use App\Models\PostCategory;
 use App\Models\Post;
 use App\Models\Order;
 use App\Models\Testimony;
+use App\Models\Homevideo;
 use App\User;
 use Auth;
 use Session;
@@ -18,6 +19,7 @@ use DB;
 use Hash;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use App;
 class FrontendController extends Controller
 {
@@ -33,21 +35,23 @@ class FrontendController extends Controller
     }
 
     public function home(){
-        $featured=Room::where('status','active')->where('is_featured',1)->orderBy('price','DESC')->limit(2)->get();
+        // $featured=Room::where('status','active')->where('is_featured',1)->orderBy('price','DESC')->limit(2)->get();
         $posts=Post::where('status','active')->orderBy('id','DESC')->limit(3)->get();
         $banners=Banner::where('status','active')->limit(4)->orderBy('id','DESC')->get();
-        $rooms=Room::where('status','active')->orderBy('id','DESC')->limit(3)->get();
+        $rooms=Room::where('status','active')->orderBy('id','DESC')->limit(6)->get();
         $category=Category::where('status','active')->where('is_parent',1)->orderBy('title','ASC')->get();
         $services=Service::where('status','active')->orderBy('title','ASC')->get();
         $testimonials=Testimony::where('status','active')->limit(3)->orderBy('id','DESC')->get();
+        $homvids=Homevideo::where('status','active')->orderBy('link','ASC')->get();
         return view('frontend.index')
-                ->with('featured',$featured)
+                // ->with('featured',$featured)
                 ->with('posts',$posts)
                 ->with('banners',$banners)
                 ->with('room_lists',$rooms)
                 ->with('testimonials',$testimonials)
                 ->with('category_lists',$category)
-                ->with('services',$services);
+                ->with('services',$services)
+                ->with('homvids',$homvids);
                 
     }   
 
@@ -55,9 +59,15 @@ class FrontendController extends Controller
         return view('frontend.pages.about-us');
     }
 
+    public function service(){
+        $services=Service::query();
+        return view('frontend.pages.service')
+            ->with('services',$services);
+    }
+
     public function checkout(){
         $rooms=Room::get();
-        return view('frontend.pages.checkout')
+        return view('frontend.pages.index')
             ->with('rooms',$rooms);
     }
 
@@ -80,7 +90,13 @@ class FrontendController extends Controller
         session()->put('locale', $locale);
         return redirect()->back();
     }
-
+    public function downloadPDF(){
+        $filePath = public_path('./pdf/CHATO_BEACH_MENU.pdf');
+        $headers = [
+            'Content-Type' => 'application/pdf',
+        ];
+        return Response::download($filePath, 'Chato_beach_menu.pdf', $headers);
+    }
     public function roomGrids(){
         $rooms=Room::query();
         
@@ -262,28 +278,6 @@ class FrontendController extends Controller
         return view('frontend.pages.room-grids')->with('rooms',$rooms)->with('recent_rooms',$recent_rooms);
     }
 
-    // public function productBrand(Request $request){
-    //     $products=Brand::getProductByBrand($request->slug);
-    //     $recent_products=Product::where('status','active')->orderBy('id','DESC')->limit(3)->get();
-    //     if(request()->is('e-shop.loc/room-grids')){
-    //         return view('frontend.pages.room-grids')->with('products',$products->products)->with('recent_products',$recent_products);
-    //     }
-    //     else{
-    //         return view('frontend.pages.product-lists')->with('products',$products->products)->with('recent_products',$recent_products);
-    //     }
-
-    // }
-    // public function productColor(Request $request){
-    //     $products=Color::getProductByColor($request->slug);
-    //     $recent_products=Product::where('status','active')->orderBy('id','DESC')->limit(3)->get();
-    //     if(request()->is('e-shop.loc/room-grids')){
-    //         return view('frontend.pages.room-grids')->with('products',$products->products)->with('recent_products',$recent_products);
-    //     }
-    //     else{
-    //         return view('frontend.pages.product-lists')->with('products',$products->products)->with('recent_products',$recent_products);
-    //     }
-
-    // }
     public function roomCat(Request $request){
         $rooms=Category::getRoomByCat($request->slug);
         // return $request->slug;
@@ -490,6 +484,12 @@ class FrontendController extends Controller
                 request()->session()->flash('error','Already Subscribed');
                 return back();
             }
+    }
+
+    public function show() {
+        $feed = \Dymantic\InstagramFeed\InstagramFeed::for('my profile');
+    
+        return view('instagram-feed', ['instagram_feed' => $feed]);
     }
     
 }

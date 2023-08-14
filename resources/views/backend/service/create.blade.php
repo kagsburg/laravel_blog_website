@@ -33,7 +33,7 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="inputPhoto" class="col-form-label">{{ __('sidebar.service_photo') }}</label>
+                        <label for="inputPhoto" class="col-form-label">{{ __('sidebar.service_photo') }} (Size: 182px X 232px)</label>
                         <div class="input-group">
                             {{-- <span class="input-group-btn">
                                 <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">

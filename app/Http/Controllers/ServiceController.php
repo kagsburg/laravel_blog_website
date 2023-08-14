@@ -95,7 +95,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $service=SErvice::findOrFail($id);
+        $service=Service::findOrFail($id);
          // return $request->all();
          $this->validate($request,[
             'title'=>'string|required',

@@ -24,8 +24,8 @@
                                         <i class="zmdi zmdi-account-o"></i>
                                     </div>
                                     <div class="text">
-                                        <h2>{{\App\Models\Category::countActiveCategory()}}</h2>
-                                        <span>{{ __('dashboard.categories') }}</span>
+                                        <h2>{{\App\User::countActiveUser()}}</h2>
+                                        <span>{{ __('dashboard.users') }}</span>
                                     </div>
                                 </div>
                                 <div class="overview-chart">
@@ -60,8 +60,8 @@
                                         <i class="zmdi zmdi-money"></i>
                                     </div>
                                     <div class="text">
-                                        <h2>{{\App\User::countActiveUser()}}</h2>
-                                        <span>{{ __('dashboard.users') }}</span>
+                                        <h2>{{\App\Models\Service::countActiveService()}}</h2>
+                                        <span>Services</span>
                                     </div>
                                 </div>
                                 <div class="overview-chart">

@@ -40,6 +40,7 @@ class TestimonyController extends Controller
         // return $request->all();
         $this->validate($request,[
             'name'=>'string|required|max:30',
+            'position'=>'string|required|max:30',
             'message'=>'string|nullable',
             'photo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'status'=>'required|in:active,inactive',
@@ -52,6 +53,7 @@ class TestimonyController extends Controller
         }
         $data['slug']=$slug;
         $data['name'] = $request->get('name');
+        $data['position'] = $request->get('position');
         $data['message'] = $request->get('message');
         $data['status'] = $request->get('status');
         // return $slug;
@@ -102,8 +104,9 @@ class TestimonyController extends Controller
         $testimonial=Testimony::findOrFail($id);
         $this->validate($request,[
             'name'=>'string|required|max:30',
+            'position'=>'string|required|max:30',
             'message'=>'string|nullable',
-            'photo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            // 'photo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'status'=>'required|in:active,inactive',
         ]);
         $data=$request->all();
@@ -114,11 +117,12 @@ class TestimonyController extends Controller
         // }
         // $data['slug']=$slug;
         $data['name'] = $request->get('name');
+        $data['position'] = $request->get('position');
         $data['message'] = $request->get('message');
         $data['status'] = $request->get('status');
         // return $slug;
-        $path = $request->file('photo')->store('public/images');
-        $data['photo'] = $path; 
+        // $path = $request->file('photo')->store('public/images');
+        // $data['photo'] = $path; 
         $status=$testimonial->fill($data)->save();
         if($status){
             request()->session()->flash('success','Testimonial successfully updated');

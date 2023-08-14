@@ -42,6 +42,7 @@
                     <tr>
                       <th>{{ __('sidebar.testimony_number') }}</th>
                       <th>{{ __('sidebar.testimony_name') }}</th>
+                      <th>Position</th>
                       <th>{{ __('sidebar.testimony_photo') }}</th>
                       <th>{{ __('sidebar.testimony_status') }}</th>
                       <th>{{ __('sidebar.testimony_action') }}</th>
@@ -52,6 +53,7 @@
                       <tr class="tr-shadow">
                           <td>{{$testimonial->id}}</td>
                           <td>{{$testimonial->name}}</td>
+                          <td>{{$testimonial->position}}</td>
                           <td>
                               @if($testimonial->photo)
                                   <img src="{{ Storage::url($testimonial->photo) }}" class="img-fluid zoom" style="max-width:80px" alt="{{ Storage::url($testimonial->photo) }}">
@@ -67,23 +69,13 @@
                               @endif
                           </td>
                           <td>
-                            <div class="table-data-feature">
-                              <a href="{{route('testimonial.edit',$testimonial->id)}}" class="item" 
-                                style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" 
-                                data-placement="top">
-                                <i class="zmdi zmdi-edit"></i>
-                              </a>
+                              <a href="{{route('testimonial.edit',$testimonial->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fa fa-edit"></i></a>
                               <form method="POST" action="{{route('testimonial.destroy',[$testimonial->id])}}">
                                 @csrf
                                 @method('delete')
-                                    <button class="item" data-id={{$testimonial->id}} 
-                                      style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" 
-                                      data-placement="top" title="Delete">
-                                      <i class="zmdi zmdi-delete"></i>
-                                    </button>
-                              </form>
-                            </div>
-                          </td>
+                              <button class="btn btn-danger btn-sm dltBtn" data-id={{$testimonial->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash"></i></button>
+                            </form>
+                        </td>
                       </tr>
                       @endforeach
                       <tr class="spacer"></tr>
